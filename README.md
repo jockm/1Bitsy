@@ -27,7 +27,19 @@ This system allows for addressing 16 bytes of read only 8-bit memory.  Not much 
 
 It would be fairly easy to expand the system to be able to address 256 bytes of 12-bit read only memory by adding addition 74*161s and tweaking the decoding logic.  This is left as an intellectual exercise for the reader
 
-Additionally there is currently an unused bit in the instruction nibble which could be used to add additional instructions
+Additionally there is currently an unused bit in the instruction nibble which could be used to add additional instructions.  For example if Bit 5 of the Instruction byte were named `I` and tied to the `ENT` and `ENP` pins of the output register, then every instruction would have a variant that would increment the output register's value:
+
+| `76543210` | `ASM` | Description                               |
+| ---------- | ----- | -----------------------------             |     
+| `**10VVVV` | `OUT` | Output `VVVV`                             | 
+| `**00VVVV` | `OTI` | Increment & Output `VVVV`                 | 
+| `0011****` | `NOP` | No Operation                              | 
+| `0001****` | `INC` | Increment Output                          | 
+| `0101VVVV` | `JMP` | Increment & `PC <- VVVV` If Input Bit Set | 
+| `0111VVVV` | `JMP` | `PC <- VVVV` If Input Bit Set             | 
+| `1*01VVVV` | `JST` | `PC <- VVVV`                              | 
+| `1*11VVVV` | `JST` | Increment &`PC <- VVVV`                   | 
+
 
 ## The System
 
