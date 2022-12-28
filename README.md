@@ -25,32 +25,32 @@ Additionally there is currently an unused bit in the instruction nibble
 
 ### I/O
 
-Output consists of 4 output bits, there is a single input bit.
+Output consists of 4 output bits (`Out0`...`Out3`), there is a single input bit (`In`).
 
 ### Instruction Byte
 
-| Bit(s)   | Name | Description |
-| -------- | ---- | ----------- |
-| Bit  7   | P    | PC Load     |
-| Bit  6   | C    | Condition   |
-| Bit  5   |      | Unused      |
-| Bit  4   | O    | Output      |
-| Bits 3-0 | VVVV | Value       |
+| Bit(s)   | Name   | Description |
+| -------- | -----  | ----------- |
+| Bit  7   | `P`    | PC Load     |
+| Bit  6   | `C`    | Condition   |
+| Bit  5   |        | Unused      |
+| Bit  4   | `O`    | Output      |
+| Bits 3-0 | `VVVV` | Value       |
 
 
 ### Instructions
 
-| 76543210 | ASM | Description                |
-| -------- | --- | -------------------------- |     
-| ***0VVVV | OUT | Output VVVV                | 
-| 00*1**** | NOP | No Operation               | 
-| 01*1VVVV | JMP | PC = VVVV If Input Bit Set | 
-| 1**1VVVV | JST | PC = VVVV                  | 
+| `76543210` | `ASM` | Description                   |
+| ---------- | ----- | ----------------------------- |     
+| `***0VVVV` | `OUT` | Output `VVVV`                 | 
+| `00*1****` | `NOP` | No Operation                  | 
+| `01*1VVVV` | `JMP` | `PC <- VVVV` If Input Bit Set | 
+| `1**1VVVV` | `JST` | `PC <- VVVV`                  | 
 
 There are two additional "phantom instructions" of dubious utility:
 
-- 01*0VVVV - JMO: Output VVVV and Jump to VVVV
-- 1**0VVVV - JSO: Output VVVV and Jump to VVVV If Input Bit Set
+- `01*0VVVV` - `JMO`: Output `VVVV` and Jump to `VVVV`
+- `1**0VVVV` - `JSO`: Output `VVVV` and Jump to `VVVV` If Input Bit Set
 
 ## Theory of Operation
 
@@ -58,12 +58,12 @@ One of the 74*161s is used as a settable register, and isn't allowed to incremen
 
 Instruction Decoding works as follows
 
-- If O is 0 then load VVVV into the output 
-- If P is 0 and C is 1 then set the PC to VVVV If In is 1
-- If P is 1 then set the PC to VVVV
+- If `O` is 0 then load `VVVV` into the output, regardless of any other bits 
+- If `P` is 0 and `C` is 1 then set the `PC` to `VVVV` If In is 1
+- If `P` is 1 then set the `PC` to `VVVV`
 
 Or to put it another way:
 
-- O is always acted on
-- P ignores C
-- C checks if In is set
+- `O` is always acted on
+- `P` ignores C
+- `C` checks if In is set
