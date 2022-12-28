@@ -1,5 +1,11 @@
 # 1-Bitsy The SAP CPU
 
+## Files in this Project
+
+- EAGLE Schematic and PCB files
+- PDF of the Schematic
+- Logisim-Evolution simulation 
+
 ## Description 
 The goal was to make the simplest possible thing that could be called a CPU.  It had to be able to do the following:
 
@@ -13,6 +19,8 @@ There is no ALU at all, no data memory, and no internal registers.  It is just a
 - 1 74*02 quad 2 input nor gate
 
 This system allows for addressing 16 bytes of read only 8-bit memory.  Not much (if anything) practical can be done with these constraints, but it does technically meet all the criteria.  As we all know being technically correct is the best kind of correct.
+
+**Personal Note:** I struggled a little to decide the "bitness" of the CPU as that is either based on the ALU width or the data bus width.  The 1Bitsy has no ALU, uses a 8 bit instruction word, 4-bit output, and has only a single bit input.  So it could be seen as a 0, 1, 4, or 8 bit system.  One bit just felt the most intellectually honest
 
 
 ### Expandability 
@@ -67,3 +75,5 @@ Or to put it another way:
 - `O` is always acted on
 - `P` ignores C
 - `C` checks if In is set
+
+
