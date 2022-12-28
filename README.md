@@ -7,7 +7,7 @@
 - Logisim-Evolution simulation 
 
 ## Description 
-After reading the book *CPUの創りかた* by Kaoru Watanabe, which describes the creation of a 4 bit CPU called the TD-4. I decided to create a CPU of my own.  I didn't want to spend weeks to months slaving over logism before making a PCB, so I gave myself the goal to make the simplest possible thing that could be called a CPU.  It had to be able to do the following:
+After reading the book *CPUの創りかた* (translation: *How to Make a CPU) by Kaoru Watanabe, which describes the creation of a 4 bit CPU called the TD-4. I decided to create a CPU of my own.  I didn't want to spend weeks to months slaving over logism before making a PCB, so I gave myself the goal to make the simplest possible thing that could be called a CPU.  It had to be able to do the following:
 
 - Sequence.  Progress from one instruction to another.
 - Selection. Change the course of execution based on some criteria.
