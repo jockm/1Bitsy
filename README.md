@@ -27,7 +27,7 @@ This system allows for addressing 16 bytes of read only 8-bit memory.  Not much 
 
 It would be fairly easy to expand the system to be able to address 256 bytes of 12-bit read only memory by adding addition 74*161s and tweaking the decoding logic.  This is left as an intellectual exercise for the reader
 
-Additionally there is currently an unused bit in the instruction nibble
+Additionally there is currently an unused bit in the instruction nibble which could be used to add additional instructions
 
 ## The System
 
@@ -62,7 +62,7 @@ There are two additional "phantom instructions" of dubious utility:
 
 ## Theory of Operation
 
-One of the 74*161s is used as a settable register, and isn't allowed to increment the value. So if the O Bit is not set, the contents of VVVV are loaded into the register, and and the QA-QD pins preserve the output until another OUT (or JMO or JSO) instruction occurs
+One of the 74*161s is used as a settable register, and isn't allowed to increment the value. So if the O Bit is not set, the contents of `VVVV` are loaded into the register, and and the `QA`-`QD` pins preserve the output until another `OUT` (or `JMO` or `JSO`) instruction occurs
 
 Instruction Decoding works as follows
 
